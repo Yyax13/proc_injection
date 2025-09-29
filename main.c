@@ -70,10 +70,8 @@ int main(int argc, char **argv) {
     unsigned long address = regs.rip;
     printf("Target RIP: 0x%llx\n", (unsigned long long)address);
 
-    // Backup (save original bytes, same len that shellcode)
     size_t wordSize = sizeof(unsigned long);
     size_t nWords = (shellcodeLen + wordSize - 1) / wordSize;
-    
     for (size_t i = 0; i < nWords; i++) {
         unsigned long word = 0;
         size_t base = i * wordSize;
