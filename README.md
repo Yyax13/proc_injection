@@ -1,6 +1,6 @@
-# Proccess Injection in Linux using PTRACE
+# Process Injection in Linux using PTRACE
 
-This repo contains a PoC of proccess injection in Linux using PTRACE (ptrace.h). The shellcode is from [this repo](https://github.com/Yyax13/shellcode) and it's a simple execve shellcode that spawns a /bin/sh shell.
+This repo contains a PoC of process injection in Linux using PTRACE (ptrace.h). The shellcode is from [this repo](https://github.com/Yyax13/shellcode) and it's a simple execve shellcode that spawns a /bin/sh shell.
 
 ## Usage
 

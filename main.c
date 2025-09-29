@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
 
     }
 
-    // Get target registers of proccess
+    // Get target registers of process
     struct user_regs_struct regs;
     if (ptrace(PTRACE_GETREGS, procID, 0, &regs) == -1) {
         perror("Can't get target regs");
