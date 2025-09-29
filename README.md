@@ -24,4 +24,4 @@ sudo ./proc_inj <pid>
 
 ## Paper
 
-A detailed explanation of the code and the techniques used can be found in our paper (not in github yet, stay tuned).
+You can read the full paper about this project in [paper.md](paper.md).
