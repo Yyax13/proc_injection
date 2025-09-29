@@ -16,7 +16,7 @@ unsigned char shellcode[] = {
 
 size_t shellcodeLen = sizeof(shellcode);
 
-int main(int argc, char**argv) {
+int main(int argc, char **argv) {
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <pid>\n", argv[0]);
         return 1;
